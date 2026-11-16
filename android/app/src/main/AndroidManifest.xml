@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Harici depolamadaki pcpanel/data.json dosyasını okumak için -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <!-- Cihaz açılışında izleme servisini başlatmak için -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <!-- Kilit ekranını açabilmek ve ekranı uyandırabilmek için -->
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <application
+        android:allowBackup="false"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+
+        <!-- Ana bilgi ekranı: her iki yatay yöne dönebilen tam ekran, tek örnek -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTask"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@style/AppTheme.Fullscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Ayarlar ekranı: uzun basma ile açılır -->
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false"
+            android:label="@string/settings_title"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@style/AppTheme.Fullscreen" />
+
+        <!-- Veri akışını sürekli izleyen ön plan servisi -->
+        <service
+            android:name=".MonitorService"
+            android:enabled="true"
+            android:exported="false" />
+
+        <!-- Yalnızca cihaz açılışında servisi başlatan alıcı (güç olayları dinlenmez) -->
+        <receiver
+            android:name=".BootReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+            </intent-filter>
+        </receiver>
+
+        <!-- Ekran kilitleme için Cihaz Yöneticisi alıcısı -->
+        <receiver
+            android:name=".PcAdminReceiver"
+            android:exported="true"
+            android:label="@string/admin_label"
+            android:description="@string/admin_description"
+            android:permission="android.permission.BIND_DEVICE_ADMIN">
+            <meta-data
+                android:name="android.app.device_admin"
+                android:resource="@xml/device_admin" />
+            <intent-filter>
+                <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
+            </intent-filter>
+        </receiver>
+
+    </application>
+</manifest>

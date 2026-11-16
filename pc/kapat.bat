@@ -1,0 +1,1 @@
+@echo off & echo {"state":"off","ts":1}>"%TEMP%\pcpanel_off.json" & "C:\platform-tools\adb.exe" push "%TEMP%\pcpanel_off.json" /sdcard/pcpanel/data.json.tmp >nul 2>&1 & "C:\platform-tools\adb.exe" shell mv /sdcard/pcpanel/data.json.tmp /sdcard/pcpanel/data.json >nul 2>&1

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg_dark">#0D1117</color>
+    <color name="card_bg">#161B22</color>
+    <color name="card_border">#30363D</color>
+    <color name="text_primary">#F0F6FC</color>
+    <color name="text_secondary">#8B949E</color>
+    <color name="accent_cpu">#58A6FF</color>
+    <color name="accent_gpu">#BC8CFF</color>
+    <color name="accent_ram">#3FB950</color>
+    <color name="accent_disk">#D29922</color>
+    <color name="status_ok">#3FB950</color>
+    <color name="status_warn">#F85149</color>
+    <color name="temp_warm">#D29922</color>
+    <color name="temp_hot">#F85149</color>
+    <color name="progress_track">#21262D</color>
+</resources>

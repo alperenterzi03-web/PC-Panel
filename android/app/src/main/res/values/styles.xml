@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Android 4.2.2 (API 17) ile uyumlu saf Holo koyu tema -->
+    <style name="AppTheme" parent="android:Theme.Holo">
+        <item name="android:windowBackground">@color/bg_dark</item>
+    </style>
+
+    <style name="AppTheme.Fullscreen" parent="android:Theme.Holo.NoActionBar.Fullscreen">
+        <item name="android:windowBackground">@color/bg_dark</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
+    </style>
+</resources>
